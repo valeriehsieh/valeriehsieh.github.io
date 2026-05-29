@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valerie Hsieh — Physicist, Educator, Runner</title>
+  <meta name="description" content="Valerie Hsieh — physicist, educator, science communicator, and competitive ultimate frisbee player." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --ink: #1a1714;
+      --rust: #c0392b;
+      --rust-light: #e8d5d2;
+      --sand: #d4c5a9;
+      --mid: #7a6f63;
+      --line: rgba(26,23,20,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.5;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mix-blend-mode: multiply;
+    }
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 3rem; right: 3rem;
+      height: 1px;
+      background: var(--line);
+    }
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rust); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: var(--line);
+    }
+    .hero-text { max-width: 520px; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s forwards;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--rust);
+    }
+    .hero-tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #3d3730;
+      max-width: 440px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--mid);
+      border: 1px solid var(--line);
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .hero-links a:hover {
+      color: var(--rust);
+      border-color: var(--rust);
+      background: var(--rust-light);
+    }
+    .hero-email {
+      margin-top: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--mid);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    /* hero image side */
+    .hero-image-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s 0.4s forwards;
+    }
+    .hero-photo-frame {
+      position: relative;
+      width: min(380px, 90%);
+    }
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid var(--sand);
+      border-radius: 2px;
+      z-index: 0;
+    }
+    .hero-photo-frame img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+      position: relative;
+      z-index: 1;
+      filter: sepia(10%) contrast(1.02);
+    }
+    .photo-caption {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      text-align: center;
+    }
+    .hero-identities {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: min(380px, 90%);
+    }
+    .identity-pill {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .identity-pill::before {
+      content: '—';
+      color: var(--rust);
+      font-style: normal;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--rust);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    /* ── OUTREACH / SCI COMM ── */
+    #outreach { background: var(--ink); color: var(--cream); }
+    #outreach .section-title { color: var(--cream); }
+    #outreach .section-num { color: var(--sand); }
+
+    .outreach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .outreach-card {
+      padding: 2.5rem;
+      background: var(--ink);
+      transition: background 0.3s;
+    }
+    .outreach-card:hover { background: #231f1b; }
+    .outreach-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 1rem;
+    }
+    .outreach-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      color: var(--cream);
+    }
+    .outreach-card p, .outreach-card li {
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.65);
+      line-height: 1.7;
+    }
+    .outreach-card ul { padding-left: 1.1rem; }
+    .outreach-card li { margin-bottom: 0.3rem; }
+    .outreach-card a {
+      color: var(--sand);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .outreach-card a:hover { color: var(--cream); }
+
+    /* YouTube embed */
+    .yt-section {
+      margin-top: 4rem;
+    }
+    .yt-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 1.5rem;
+    }
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .yt-embed {
+      aspect-ratio: 16/9;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .yt-embed iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+    .yt-channel-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .yt-channel-link:hover {
+      color: var(--cream);
+      border-color: var(--cream);
+    }
+
+    /* ── TEACHING ── */
+    #teaching { background: var(--cream); }
+
+    .teaching-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+    }
+    .teaching-sidebar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+    .teaching-sidebar p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .teaching-roles { display: flex; flex-direction: column; gap: 3rem; }
+    .teaching-role { padding-bottom: 3rem; border-bottom: 1px solid var(--line); }
+    .teaching-role:last-child { border-bottom: none; padding-bottom: 0; }
+    .role-institution {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.5rem;
+    }
+    .role-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--line);
+    }
+    .role-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .role-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--rust);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+    .role-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .role-content .role-sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+    .role-content ul {
+      padding-left: 1.1rem;
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+    .role-content a { color: var(--rust); text-underline-offset: 3px; }
+
+    /* ── ATHLETICS / FRISBEE ── */
+    #athletics {
+      background: #f0e8db;
+    }
+    .athletics-intro {
+      max-width: 600px;
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 4rem;
+    }
+    .frisbee-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .frisbee-era {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      position: relative;
+    }
+    .frisbee-era::before {
+      content: '';
+      position: absolute;
+      left: 180px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--line);
+    }
+    .era-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--rust);
+      padding-top: 0.25rem;
+      text-align: right;
+      padding-right: 2rem;
+    }
+    .era-content { padding-left: 2rem; }
+    .era-team {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .era-team a { color: inherit; text-decoration: none; }
+    .era-team a:hover { color: var(--rust); }
+    .era-details {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+    .era-achievement {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--rust-light);
+      color: var(--rust);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .runner-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.4);
+      border-radius: 2px;
+      max-width: 480px;
+    }
+    .runner-note-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.75rem;
+    }
+    .runner-note p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--mid);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--rust); }
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--sand);
+      letter-spacing: 0.08em;
+      width: 100%;
+      text-align: right;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav::after { left: 1.5rem; right: 1.5rem; }
+      .nav-name { display: none; }
+      .nav-links { gap: 1.25rem; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 4rem;
+        gap: 3rem;
+      }
+      .hero::after { display: none; }
+      .hero-image-col { order: -1; }
+
+      .outreach-grid { grid-template-columns: 1fr; }
+      .teaching-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .frisbee-era { grid-template-columns: 1fr; }
+      .frisbee-era::before { display: none; }
+      .era-year { text-align: left; padding-right: 0; }
+      .era-content { padding-left: 0; }
+
+      section { padding: 4rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-copy { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-name">Valerie Hsieh</a>
+    <ul class="nav-links">
+      <li><a href="#outreach">Sci Comm</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#athletics">Athletics</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Ph.D. Physics · Columbia University</p>
+      <h1 class="hero-name">Valerie<br><em>Hsieh</em></h1>
+      <p class="hero-tagline">Physicist · Educator · Runner</p>
+      <p class="hero-bio">
+        Valerie Hsieh holds a Ph.D. in physics from Columbia University. Her graduate research focused on the electronic and optical properties of 2D heterostructures, characterized using atomic force microscopy methods. She is passionate about science policy and science communication, particularly concerning topics of difficult knowledge in STEM disciplines.
+      </p>
+      <p class="hero-bio" style="margin-top:1rem;">
+        As a Senior Lead Teaching Fellow through Columbia's Center for Teaching and Learning, she organized a university-wide learning community for graduate instructors on difficult knowledge and inclusive teaching — later delivered to a nationwide network of educators from over 70 institutions.
+      </p>
+      <p class="hero-bio" style="margin-top:1rem;">
+        She holds a B.A. in Physics and German from the University of California, Berkeley. She is an avid language learner, marathoner, and competitive ultimate frisbee player.
+      </p>
+      <div class="hero-links">
+        <a href="https://instagram.com/valeriehsieh" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://twitter.com/valeriehsieh" target="_blank" rel="noopener">Twitter/X</a>
+        <a href="https://linkedin.com/in/valeriehsieh" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://open.spotify.com/user/22gfl54l3daoge7f55saxx4zi" target="_blank" rel="noopener">Spotify</a>
+      </div>
+      <p class="hero-email">vh2289 (at) columbia (dot) edu</p>
+    </div>
+
+    <div class="hero-image-col">
+      <div class="hero-photo-frame">
+        <!-- Replace the src below with your own photo filename once you upload it alongside index.html -->
+        <img
+          src="https://valeriehsieh.com/wp-content/uploads/2025/08/columbia_portrait_02_original-2.jpg"
+          alt="Valerie Hsieh"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <p class="photo-caption">Photo by Bárbara Cruvinel Santiago (2022)</p>
+      <div class="hero-identities">
+        <div class="identity-pill">Condensed matter physicist</div>
+        <div class="identity-pill">Science communicator</div>
+        <div class="identity-pill">University educator</div>
+        <div class="identity-pill">Competitive frisbee player</div>
+        <div class="identity-pill">Marathoner &amp; language learner</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTREACH / SCI COMM -->
+  <section id="outreach">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Science Communication<br>&amp; Outreach</h2>
+    </div>
+
+    <div class="outreach-grid reveal">
+      <div class="outreach-card">
+        <p class="outreach-card-label">Press Coverage</p>
+        <h3>Research in the Media</h3>
+        <ul>
+          <li>
+            <a href="https://quantum.columbia.edu/videos/let-it-rip-scotch-tape-quantum-research" target="_blank" rel="noopener">Scotch Tape in Quantum Research</a>
+            — Columbia University press release &amp; <a href="https://youtu.be/RDTCfOkmTE8" target="_blank" rel="noopener">video</a>
+          </li>
+          <li>
+            <a href="https://news.columbia.edu/news/stacking-and-twisting-graphene-magnetism-quantum" target="_blank" rel="noopener">Stacking and twisting graphene unlocks a rare form of magnetism</a>
+            — Columbia University press release
+          </li>
+          <li>
+            <a href="https://www.mrs.org/meetings-events/spring-meetings-exhibits/2023-mrs-spring-meeting/science-as-art-winners" target="_blank" rel="noopener">Materials Research Society Spring 2023 "Science as Art" award winner</a>
+            — "Karl the Moiré Fog"
+          </li>
+        </ul>
+      </div>
+
+      <div class="outreach-card">
+        <p class="outreach-card-label">Advocacy &amp; Scholarship</p>
+        <h3>Difficult Knowledge &amp; Inclusive STEM</h3>
+        <ul>
+          <li>
+            <a href="https://drive.google.com/file/d/1gmIm9n_ai2UJRQDp_0IvT_SCz7hQz_SW/view" target="_blank" rel="noopener">The moral and ethical education of early-career physicists</a>
+            — Princeton School on Science and Global Security, 2023
+          </li>
+          <li>
+            <a href="https://ctl.columbia.edu/graduate-instructors/ctlgrads-learning-communities/" target="_blank" rel="noopener">"Would You Ever Teach This?" Difficult Knowledge and Inclusive Teaching in the Classroom</a>
+            — Columbia University-wide Learning Community (co-facilitated)
+          </li>
+          <li>
+            <a href="https://valeriehsieh.com/2023/03/04/facing-history-why-engaging-with-difficult-histories-matters-for-scientists/" target="_blank" rel="noopener">Facing History: Why engaging with difficult histories matters for scientists</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="outreach-card">
+        <p class="outreach-card-label">Volunteer</p>
+        <h3>Golden Gate Science Olympiad</h3>
+        <ul>
+          <li>
+            <a href="https://goldengateso.com/2020/team/" target="_blank" rel="noopener">2020 — Tournament Director</a>
+          </li>
+          <li>
+            <a href="https://goldengateso.com/2019/team/" target="_blank" rel="noopener">2019 — Tournament Director</a>
+          </li>
+          <li>
+            2018 — Event Volunteer: Mousetrap Vehicle
+            <br>Featured in <a href="https://www.youtube.com/watch?v=b7zWwo9dbiU" target="_blank" rel="noopener">Mark Rober's YouTube video on Mousetrap cars</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- YouTube Section -->
+    <div class="yt-section reveal">
+      <p class="yt-label">YouTube · Science Communication</p>
+      <div class="yt-grid">
+        <!-- Columbia Scotch Tape / Quantum Research video -->
+        <div class="yt-embed">
+          <iframe
+            src="https://www.youtube.com/embed/RDTCfOkmTE8"
+            title="Scotch Tape in Quantum Research — Columbia University"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <!-- Mark Rober Mousetrap video (external, her appearance) -->
+        <div class="yt-embed">
+          <iframe
+            src="https://www.youtube.com/embed/b7zWwo9dbiU"
+            title="Mark Rober — Mousetrap cars (features Valerie's Science Olympiad event)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.82rem; color:rgba(245,240,232,0.5); font-family:'DM Mono',monospace; letter-spacing:0.05em;">
+        Add your YouTube channel link below — update the href with your channel URL.
+      </p>
+      <a class="yt-channel-link" href="https://www.youtube.com/@valeriehsieh" target="_blank" rel="noopener">
+        → View YouTube Channel
+      </a>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Teaching</h2>
+    </div>
+
+    <div class="teaching-layout">
+      <div class="teaching-sidebar reveal">
+        <h3>On pedagogy</h3>
+        <p>
+          Valerie's teaching philosophy centers on making difficult knowledge accessible and creating inclusive classrooms. From lab instruction to nationwide faculty workshops, she brings the same rigor to teaching that she brings to research.
+        </p>
+      </div>
+
+      <div class="teaching-roles reveal">
+
+        <!-- Columbia: Lecturer -->
+        <div class="teaching-role">
+          <p class="role-institution">Columbia University</p>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4>Lecturer</h4>
+              <p class="role-sub">Physics 1494: Introduction to Experimental Physics Lab</p>
+              <ul>
+                <li>Fall 2023 — 177 students</li>
+                <li>Spring 2024 — 52 students</li>
+                <li>Fall 2024 — 131 students</li>
+                <li>Spring 2025 — 53 students</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4><a href="https://ctl.columbia.edu/graduate-instructors/opportunities-for-graduate-students/lead-teaching-fellows/senior-lead-teaching-fellowship/" target="_blank" rel="noopener">Senior Lead Teaching Fellow</a></h4>
+              <p class="role-sub">2022–2023 · Columbia Center for Teaching and Learning</p>
+              <ul>
+                <li>One of eight SLTFs supporting a cohort of 45 Lead Teaching Fellows</li>
+                <li>Created sustained pedagogical support for graduate instructors across the university</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4><a href="https://cirtl.net/event/teaching-discomfort-facilitating-challenging-discussions-in-the-classroom/2023-09-21/" target="_blank" rel="noopener">CIRTL Instructor</a></h4>
+              <p class="role-sub">Fall 2023</p>
+              <ul>
+                <li>Created two-part workshop for instructors nationwide through the Center for the Integration of Research, Teaching, and Learning</li>
+                <li>Facilitated two-hour workshop for 125 graduate students, staff, and faculty at over 70 institutions</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4><a href="https://ctl.columbia.edu/graduate-instructors/opportunities-for-graduate-students/lead-teaching-fellows/" target="_blank" rel="noopener">Lead Teaching Fellow</a></h4>
+              <p class="role-sub">2021–2022 · Columbia Center for Teaching and Learning</p>
+              <ul>
+                <li>Representative for CTL within the physics department</li>
+                <li>Developed pedagogical events in fall 2021 and spring 2022 for department graduate instructors</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4>Teaching Assistant — Physics 1291 &amp; 1292</h4>
+              <p class="role-sub">Intro to Kinematics &amp; Intro to E&amp;M (Laboratory TA)</p>
+              <ul>
+                <li>Fall 2020 — 13 students; Fall 2021 — 27 students</li>
+                <li>Spring 2021 — 26 students; Spring 2022 — 25 students</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4>Teaching Assistant — Physics 1201</h4>
+              <p class="role-sub">Intro to Kinematics &amp; Mechanics (Recitation TA)</p>
+              <ul>
+                <li>Fall 2022 — 30 students; led exam review sessions for lecture of 170</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4>Private Tutor</h4>
+              <ul>
+                <li>Physics 1201 — 7 students (Fall 2022, Fall 2023, Spring 2024)</li>
+                <li>Physics 1202 — 6 students (Spring 2023, Summer 2023, Spring 2024)</li>
+                <li>Physics 1401 — 1 student (Fall 2023)</li>
+                <li>Physics 1402 — 2 students (Spring 2023, Spring 2024)</li>
+                <li>AP Physics — 1 student (Spring 2025)</li>
+                <li><a href="https://www.polygence.org/program" target="_blank" rel="noopener">Polygence Mentor</a> — 3 students</li>
+                <li><a href="https://www.learnstem.org/" target="_blank" rel="noopener">LearnSTEM Mentor</a> — 2 students</li>
+                <li><a href="https://www.collegeimpact.com/" target="_blank" rel="noopener">College Impact Mentor</a> — 4 students</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- UC Berkeley -->
+        <div class="teaching-role">
+          <p class="role-institution">University of California, Berkeley</p>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4>BASIS "Be A Scientist" Mentor</h4>
+              <p class="role-sub">Willard Middle School — 7th grade science mentor</p>
+              <ul>
+                <li>Fall 2019 — instructed 4 students on the scientific method to develop their own 10-week science projects</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h4>Volunteer Tutor</h4>
+              <p class="role-sub">High-school-level geometry, calculus, physics, chemistry</p>
+              <ul>
+                <li>Spring 2018 — 3 students</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ATHLETICS -->
+  <section id="athletics">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Athletics</h2>
+    </div>
+
+    <p class="athletics-intro reveal">
+      Competitive ultimate frisbee player since high school, representing teams from the Bay Area to New York to the international stage. Also a dedicated marathoner and language learner who believes movement is fundamental to thinking.
+    </p>
+
+    <div class="frisbee-timeline reveal">
+
+      <div class="frisbee-era">
+        <div class="era-year">2024</div>
+        <div class="era-content">
+          <p class="era-team">Chinese Taipei Mixed National Team</p>
+          <p class="era-details">
+            <a href="https://wuc2024.sport/" target="_blank" rel="noopener">2024 World Ultimate Championships</a>, Gold Coast, Australia<br>
+            <a href="https://www.instagram.com/ct.mixed.2023/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/groups/CTFDA/posts/7056671927702408/" target="_blank" rel="noopener">Facebook</a>
+          </p>
+          <span class="era-achievement">National Team · Worlds</span>
+        </div>
+      </div>
+
+      <div class="frisbee-era">
+        <div class="era-year">2022–present</div>
+        <div class="era-content">
+          <p class="era-team">
+            <a href="https://www.instagram.com/bkbookclubultimate/" target="_blank" rel="noopener">Brooklyn Book Club</a>
+          </p>
+          <p class="era-details">
+            Select Flight qualifiers (2023)<br>
+            <a href="https://www.instagram.com/bkbookclubultimate/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://twitter.com/bkbookclub" target="_blank" rel="noopener">Twitter</a>
+          </p>
+          <span class="era-achievement">Select Flight Qualifiers</span>
+        </div>
+      </div>
+
+      <div class="frisbee-era">
+        <div class="era-year">2021–2022</div>
+        <div class="era-content">
+          <p class="era-team">
+            <a href="https://www.instagram.com/columbiafrisbabes/" target="_blank" rel="noopener">Columbia Curbside</a>
+          </p>
+          <p class="era-details">
+            <a href="https://www.instagram.com/columbiafrisbabes/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://twitter.com/cultimatewomen" target="_blank" rel="noopener">Twitter</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="frisbee-era">
+        <div class="era-year">2021</div>
+        <div class="era-content">
+          <p class="era-team">
+            <a href="https://www.instagram.com/xistultimate/" target="_blank" rel="noopener">New York XIST</a>
+          </p>
+          <p class="era-details">
+            <a href="https://play.usaultimate.org/events/USA-Ultimate-National-Championships-2021/schedule/mixed/Club-Mixed/" target="_blank" rel="noopener">2021 Club National Championships</a> qualifier<br>
+            <a href="https://www.instagram.com/xistultimate/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://twitter.com/XIST_Ultimate" target="_blank" rel="noopener">Twitter</a>
+          </p>
+          <span class="era-achievement">Club Nationals Qualifier</span>
+        </div>
+      </div>
+
+      <div class="frisbee-era">
+        <div class="era-year">2016–2020</div>
+        <div class="era-content">
+          <p class="era-team">
+            <a href="https://www.instagram.com/pie.queens/" target="_blank" rel="noopener">UC Berkeley Pie Queens</a>
+          </p>
+          <p class="era-details">
+            <a href="https://play.usaultimate.org/events/2017-USA-Ultimate-College-Championships/schedule/Women/CollegeWomen/" target="_blank" rel="noopener">2017 College Championships qualifier</a><br>
+            <a href="https://collegechampionships.usaultimate.org/2017/06/2017-freshmen-teams/" target="_blank" rel="noopener">2017 Southwest Region Freshman of the Year</a><br>
+            <a href="https://www.instagram.com/pie.queens/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://twitter.com/piequeens" target="_blank" rel="noopener">Twitter</a>
+          </p>
+          <span class="era-achievement">College Championships · Freshman of the Year</span>
+        </div>
+      </div>
+
+      <div class="frisbee-era">
+        <div class="era-year">2013–2016</div>
+        <div class="era-content">
+          <p class="era-team">
+            <a href="https://www.instagram.com/lhsfooligals/" target="_blank" rel="noopener">Lexington High School Fooligals</a>
+          </p>
+          <p class="era-details">
+            <a href="https://play.usaultimate.org/events/Northeastern-High-School-Regional-Championship-2015/schedule/Girls/High-School-Girls/" target="_blank" rel="noopener">2016 Northeastern Regional Championship finalists</a>
+          </p>
+          <span class="era-achievement">Regional Finalists</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="runner-note reveal">
+      <p class="runner-note-label">Also</p>
+      <p>Avid marathoner and competitive runner, alongside being an enthusiastic language learner. Movement and multilingualism go hand in hand.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Valerie Hsieh</span>
+    <div class="footer-links">
+      <a href="https://instagram.com/valeriehsieh" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com/valeriehsieh" target="_blank" rel="noopener">Twitter</a>
+      <a href="https://linkedin.com/in/valeriehsieh" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://open.spotify.com/user/22gfl54l3daoge7f55saxx4zi" target="_blank" rel="noopener">Spotify</a>
+    </div>
+    <p class="footer-copy">vh2289 (at) columbia (dot) edu</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+
+    // Smooth nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'var(--rust)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+</body>
+</html>
